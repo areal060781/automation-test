@@ -13,12 +13,8 @@ class ShowResultsScreen:
         self.search_results = driver.find_elements_by_css_selector('div.row>div.col.s12')
         self.back_button = driver.find_element_by_partial_link_text('BACK')
 
-    def get_result(self, number):
-        index = number - 1
-        return self.search_results[index]
-
-    def go_external_url_by_index(self, number):
-        external_url = self.get_result(number).find_element_by_link_text('URL')
+    def go_external_url_by_index(self, index):
+        external_url = self.search_results[index].find_element_by_link_text('URL')
         url = external_url.get_attribute('href')
         external_url.click()
 
