@@ -7,6 +7,7 @@
 
 ### Installation
 Install dependencies and activate the virtual environment
+From project root, run:
 ```sh
 pipenv install --dev
 pipenv shell

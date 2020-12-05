@@ -1,8 +1,8 @@
 import pytest
 
-from tests.values import strings
-from tests.pageobjects.showsearchscreen import ShowSearchScreen as SearchScreen
-from tests.pageobjects.showresultsscreen import ShowResultsScreen as ResultsScreen
+from .helpers.testdata import *
+from .screens.showsearch import ShowSearch as SearchScreen
+from .screens.showresults import ShowResults as ResultsScreen
 
 
 @pytest.fixture
@@ -25,17 +25,17 @@ def selenium(selenium):
 
 
 def test_search(selenium):
-    selenium.get(strings.search_url)
+    selenium.get(search_url)
 
     search = SearchScreen(selenium)
-    search.run(strings.show)
+    search.run(show_name)
 
     results = ResultsScreen(selenium)
-    results.go_external_url_by_index(strings.result_index)
+    results.go_external_url_by_index(result_index)
 
     selenium.back()
 
-    results.change_background_color_by_result_title(strings.show_title, strings.color)
+    results.change_background_color_by_result_title(show_title, color)
     results.press_back_button()
 
     search.validate_input_search_is_empty()

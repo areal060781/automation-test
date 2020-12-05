@@ -1,13 +1,12 @@
-import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.color import Color
 
-from tests.values import strings
+from tests.helpers.testdata import search_url
 
 
-class ShowResultsScreen:
+class ShowResults:
     def __init__(self, driver):
         self.driver = driver
         self.search_results = driver.find_elements_by_css_selector('div.row>div.col.s12')
@@ -23,7 +22,7 @@ class ShowResultsScreen:
     def press_back_button(self):
         self.driver.find_element_by_partial_link_text('BACK').click()
 
-        assert self.driver.current_url == strings.search_url
+        assert self.driver.current_url == search_url
 
     def change_background_color_by_result_title(self, title, color):
         wait = WebDriverWait(self.driver, 3)
