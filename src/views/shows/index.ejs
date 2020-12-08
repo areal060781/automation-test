@@ -2,7 +2,7 @@
 <div class="row">
     <div class="input-field col s12">
         <form action="/shows/search" method="post">
-            <input type="text" placeholder="Search" name="search" class="validate">
+            <input type="text" placeholder="Search" name="search" class="validate" data-testid="search-box">
             <% if( locals.errors ) {%>
                 <span class="helper-text" data-error="wrong" data-success="right"><%= errors.message %></span>
             <% } %>
